@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Requests;
+
+use App\Models\CandidateEducation;
+use Illuminate\Foundation\Http\FormRequest;
+
+/**
+ * Class CreateCandidateEducationRequest
+ */
+class CreateCandidateEducationRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return CandidateEducation::$rules;
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function messages()
+    {
+        return [
+            'country_id.required' => 'The country field is required.',
+        ];
+    }
+}
